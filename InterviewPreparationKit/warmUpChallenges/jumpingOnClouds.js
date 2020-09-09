@@ -50,3 +50,20 @@ Sample Output 1
 Explanation 1:
 The only thundercloud to avoid is c[4]. Emma can win the game in 3 jumps:
  */
+
+const jumpingOnClouds = c => {
+
+    let count = 0
+    let i = 0
+
+    while (i < c.length - 1) {
+        if (c[i + 2] !== 1) i += 2
+        else i++
+        count++
+    }
+    return count
+}
+
+console.log(jumpingOnClouds([0, 0, 1, 0, 0, 1, 0])) //4
+console.log(jumpingOnClouds([0, 0, 0, 0, 1, 0])) //3
+console.log(jumpingOnClouds([0, 0, 0, 1, 0, 0])) //3
