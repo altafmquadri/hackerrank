@@ -45,23 +45,38 @@ _/\      _
     \/\/
 It's clear that there is only one valley there, so we print on a new line. */
 
+// const countingValleys = (n, s) => {
+//     //assign a value to each letter
+//     const arr = [...s].map(letter => letter === 'U' ? 1 : -1)
+//     let count = 0, sum = 0
+//     //create a running total of all the ups and downs 
+//     const sumArray = []
+//     for (let num of arr) {
+//         sumArray.push(sum += num)
+//     }
+//     //in the running total check to see if there is a point where zero is reached
+//     //if it is check the position right before to see that it is an upward movement, if so count it as a valley
+//     for (let [i, num] of sumArray.entries()) {
+//         if (num === 0 && sumArray[i - 1] === -1) {
+//             count++
+//         }
+//     }
+//     return count
+// }
+
+//refactored
 const countingValleys = (n, s) => {
-    //assign a value to each letter
-    const arr = [...s].map(letter => letter === 'U' ? 1 : -1)
     let count = 0, sum = 0
-    //create a running total of all the ups and downs 
-    const sumArray = []
-    for (let num of arr) {
-        sumArray.push(sum += num)
-    }
-    //in the running total check to see if there is a point where zero is reached
-    //if it is check the position right before to see that it is an upward movement, if so count it as a valley
-    for (let [i, num] of sumArray.entries()) {
-        if (num === 0 && sumArray[i - 1] === -1) {
-            count++
-        }
-    }
+    //assign string a number either 1 or -1 and then convert to running total
+    const path = [...s].map(val => val === 'U' ? 1 : -1)
+        .map(val => sum += val)
+    //check for a zero value, if left value is -1 they are coming from below to sea-level count as valley
+    path.forEach((val, i) => {
+        val === 0 && path[i - 1] === -1 ? count++ : false
+    })
     return count
 }
 
+//cSpell:disable
 console.log(countingValleys(8, 'UDDDUDUU'));
+console.log(countingValleys(12, 'DDUUDDUDUUUD'))
