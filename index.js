@@ -1,18 +1,17 @@
-const repeatedString = (s, n) => {
-    let count = 0
-    let remainder, str
-    for (let letter of s) {
-        if (letter === 'a') count++
+const rotLeft = (a, d) => {
+    let i = 0
+    let rotation = d
+    const newArr = []
+
+    while (rotation < a.length) {
+        newArr[i++] = a[rotation++]
     }
-    count *= Math.floor(n / s.length)
-    remainder = n % s.length
-    if (remainder === 0) return count
-    str = s.substring(0, remainder)
-    for (let l of str) {
-        if (l === 'a') count++
+    rotation = 0
+    while (rotation < d) {
+        newArr[i++] = a[rotation++]
     }
-    return count
+    return newArr
 }
 
-console.log(repeatedString('aba', 10)) //7
-console.log(repeatedString('a', 1000000000000)) //1000000000000
+
+console.log(rotLeft([1, 2, 3, 4, 5], 4)) //5 1 2 3 4

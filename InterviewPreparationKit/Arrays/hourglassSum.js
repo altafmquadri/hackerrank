@@ -125,5 +125,5 @@ const arr2 = [
     [0, 0, 1, 2, 4, 0]
 ]
 
-console.log(hourglassSum(arr))
-console.log(hourglassSum(arr2))
+console.log(hourglassSum(arr)) //28
+console.log(hourglassSum(arr2))//19

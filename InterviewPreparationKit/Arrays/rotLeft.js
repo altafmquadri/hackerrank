@@ -38,25 +38,19 @@ When we perform d left rotations, the array undergoes the following sequence of 
  */
 
 const rotLeft = (a, d) => {
-    const len = a.length
-    const copy = []
-
     let i = 0
-    let copyIndex = d
+    let rotation = d
+    const newArr = []
 
-    while (copyIndex < len) {
-        copy[i] = a[copyIndex]
-        i++
-        copyIndex++
+    while (rotation < a.length) {
+        newArr[i++] = a[rotation++]
     }
-
-    copyIndex = 0
-    while (copyIndex < d) {
-        copy[i] = a[copyIndex]
-        i++
-        copyIndex++
+    rotation = 0
+    while (rotation < d) {
+        newArr[i++] = a[rotation++]
     }
-    return copy
+    return newArr
 }
+
 
 console.log(rotLeft([1, 2, 3, 4, 5], 4)) //5 1 2 3 4
