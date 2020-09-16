@@ -67,3 +67,4 @@ const jumpingOnClouds = c => {
 console.log(jumpingOnClouds([0, 0, 1, 0, 0, 1, 0])) //4
 console.log(jumpingOnClouds([0, 0, 0, 0, 1, 0])) //3
 console.log(jumpingOnClouds([0, 0, 0, 1, 0, 0])) //3
+console.log(jumpingOnClouds([0, 0, 1, 0, 0, 0, 0, 1, 0, 0])) //6

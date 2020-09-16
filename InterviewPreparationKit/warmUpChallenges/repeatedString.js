@@ -43,26 +43,42 @@ Sample Output 1
 Explanation 1
 Because all of the first n = 1000000000000 letters of the infinite string are a, we print 1000000000000 on a new line. */
 
-
 const repeatedString = (s, n) => {
-    let total = 0
-    let found = 0
-    let repeatsOfS = Math.floor(n / s.length)
-    let remainder = n % s.length
-    
+    let count = 0
+    let remainder, str
     for (let letter of s) {
-        if (letter === 'a') found++
+        if (letter === 'a') count++
     }
-    
-    total = found * repeatsOfS
-    if (remainder === 0) return total
-    
-    let part = s.substring(0, remainder)
-    for (let letter of part) {
-        if (letter === 'a') total++
+    count *= Math.floor(n / s.length)
+    remainder = n % s.length
+    if (remainder === 0) return count
+    str = s.substring(0, remainder)
+    for (let l of str) {
+        if (l === 'a') count++
     }
-    return total
+    return count
 }
+
+
+// const repeatedString = (s, n) => {
+//     let total = 0
+//     let found = 0
+//     let repeatsOfS = Math.floor(n / s.length)
+//     let remainder = n % s.length
+    
+//     for (let letter of s) {
+//         if (letter === 'a') found++
+//     }
+    
+//     total = found * repeatsOfS
+//     if (remainder === 0) return total
+    
+//     let part = s.substring(0, remainder)
+//     for (let letter of part) {
+//         if (letter === 'a') total++
+//     }
+//     return total
+// }
 
 /* const repeatedString = (s, n) => {
     let total = 0

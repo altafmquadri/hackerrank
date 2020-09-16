@@ -1,16 +1,18 @@
-
-const countingValleys = (n, s) => {
-    let count = 0, sum = 0
-    //assign string a number either 1 or -1 and then convert to running total
-    const path = [...s].map(val => val === 'U' ? 1 : -1)
-        .map(val => sum += val)
-    //check for a zero value, if left value is -1 they are coming from below to sea-level count as valley
-    path.forEach((val, i) => {
-        val === 0 && path[i - 1] === -1 ? count++ : false
-    })
+const repeatedString = (s, n) => {
+    let count = 0
+    let remainder, str
+    for (let letter of s) {
+        if (letter === 'a') count++
+    }
+    count *= Math.floor(n / s.length)
+    remainder = n % s.length
+    if (remainder === 0) return count
+    str = s.substring(0, remainder)
+    for (let l of str) {
+        if (l === 'a') count++
+    }
     return count
 }
 
-//cSpell:disable
-console.log(countingValleys(8, 'UDDDUDUU'));
-console.log(countingValleys(12, 'DDUUDDUDUUUD'))
+console.log(repeatedString('aba', 10)) //7
+console.log(repeatedString('a', 1000000000000)) //1000000000000
