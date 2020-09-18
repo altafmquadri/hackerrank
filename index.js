@@ -1,28 +1,31 @@
-const minimumBribes = q => {
-    const swap = (arr, i, j) => [arr[i], arr[j]] = [arr[j], arr[i]]
+const minimumSwaps = arr => {
 
-    let swapCount = 0
+    const visited = {}
+    let cycleLength, currentIdx, valueBelongsAtIndex, swaps = 0
 
-    for (let i = q.length - 1; i >= 0; i--) {
-        if (q[i] !== i + 1) {
-            if (i - 2 >= 0 && q[i - 2] === i + 1) {
-                swap(q, i - 2, i - 1)
-                swap(q, i - 1, i)
-                swapCount += 2
+    for (let i = 0; i < arr.length; i++) {
+        if (!visited[i]) {
+            visited[i] = true
+            currentIdx = i
+            valueBelongsAtIndex = arr[i] - 1
+            cycleLength = 1
+
+            while (valueBelongsAtIndex !== i) {
+                visited[valueBelongsAtIndex] = true
+                currentIdx = valueBelongsAtIndex
+                valueBelongsAtIndex = arr[currentIdx] - 1
+                cycleLength++
             }
-            else if (i - 1 >= 0 && q[i - 1] === i + 1) {
-                swap(q, i - 1, i)
-                swapCount++
-            }
-            else return console.log('Too chaotic')
+            swaps += (cycleLength - 1)
         }
     }
-    return console.log(swapCount)
+    return swaps
 }
 
 
-minimumBribes([2, 1, 5, 3, 4]) //3
-minimumBribes([2, 5, 1, 3, 4]) // Too chaotic
-minimumBribes([1, 2, 5, 3, 4, 7, 8, 6]) //4
-minimumBribes([5, 1, 2, 3, 7, 8, 6, 4]) // Too chaotic
-minimumBribes([1, 2, 5, 3, 7, 8, 6, 4]) // 7  but I am getting 5
+
+console.log(minimumSwaps([4, 3, 1, 2])) //3
+console.log(minimumSwaps([2, 3, 4, 1, 5])) //3
+console.log(minimumSwaps([1, 3, 5, 2, 4, 6, 7])) //3
+console.log(minimumSwaps([7, 1, 3, 2, 4, 5, 6])) //5
+console.log(minimumSwaps([4, 2, 5, 1, 7, 3, 6])) //4
