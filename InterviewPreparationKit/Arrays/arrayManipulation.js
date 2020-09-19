@@ -91,7 +91,42 @@ const arrayManipulation = (n, queries) => {
         sum = 0
     }
     return max
-} */
+} 
+
+
+//Shortened brute force
+
+const arrayManipulation = (n, queries) => {
+    let cols = n
+    let qRow, leftIndex, rightIndex, summand
+    let sum = max = 0
+    let arr = Array.from(new Array(queries.length), () => Array(cols).fill(0))
+
+    for (let row = 0; row < queries.length; row++) {
+        qRow = queries[row]
+        leftIndex = qRow[0] - 1
+        rightIndex = qRow[1]
+        summand = qRow[2]
+
+        while (leftIndex < rightIndex) {
+            arr[row][leftIndex] += summand
+            leftIndex++
+        }
+    }
+
+    for (let col = 0; col < cols; col++) {
+        let row = 0
+        sum = 0
+        while (row < queries.length) {
+            sum += arr[row][col]
+            max = Math.max(sum, max)
+            row++
+        }
+    }
+    console.log(arr);
+    return max
+}
+*/
 
 
 /* 
