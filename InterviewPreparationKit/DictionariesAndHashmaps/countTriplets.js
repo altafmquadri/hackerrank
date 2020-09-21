@@ -51,10 +51,24 @@ Sample Output 2
 4
 
 Explanation 2
-The triplets satisfying are index (0,1,3), (0,2,3), (1,3,4), (2,3,4). */
+The triplets satisfying are index (0,1,3), (0,2,3), (1,3,4), (2,3,4). 
+https://youtu.be/KZ8k9-22JmQ*/
 
 const countTriplets = (arr, r) => {
-    
+    const beforeHash = {}
+    const afterHash = {}
+    let count = 0
+
+    arr.forEach(val => afterHash[val] = (afterHash[val] || 0) + 1)
+
+    for (let val of arr) {
+        afterHash[val]--
+        if (beforeHash[val / r] && val % r === 0 && afterHash[val * r]) {
+            count += beforeHash[val / r] * afterHash[val * r]
+        }
+        beforeHash[val] = (beforeHash[val] || 0) + 1
+    }
+    return count
 }
 
 console.log(countTriplets([1, 3, 9, 9, 27, 81], 3));
