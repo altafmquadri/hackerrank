@@ -71,4 +71,7 @@ const countTriplets = (arr, r) => {
     return count
 }
 
-console.log(countTriplets([1, 3, 9, 9, 27, 81], 3));
+console.log(countTriplets([1, 3, 9, 9, 27, 81], 3)) //6
+console.log(countTriplets([1, 5, 5, 25, 125], 5)) //4
+console.log(countTriplets([1, 2, 2, 4], 2)) //2
+console.log(countTriplets([1, 4, 16, 64], 4)) //2
