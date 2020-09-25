@@ -59,17 +59,29 @@ Explanation 2
 
 Harold's magazine is missing the word . */
 
-const checkMagazine = (magazine, note) => {
-    const magazineHash = {}
-    magazine.forEach(word => magazineHash[word] = (magazineHash[word] || 0) + 1)
 
-    for (let word of note) {
-        if (!magazineHash[word]) return console.log('No')
-        magazineHash[word]--
-        if (magazineHash[word] < 0) return console.log("No")
+const checkMagazine = (magazine, note) => {
+    const words = {}
+    magazine.forEach(word => words[word] = (words[word] || 0) + 1)
+
+    for (let w of note) {
+        if (!words[w]) return console.log('No')
+        words[w] -= 1
     }
-    return console.log("Yes")
+    return console.log('Yes')
 }
+
+// const checkMagazine = (magazine, note) => {
+//     const magazineHash = {}
+//     magazine.forEach(word => magazineHash[word] = (magazineHash[word] || 0) + 1)
+
+//     for (let word of note) {
+//         if (!magazineHash[word]) return console.log('No')
+//         magazineHash[word]--
+//         if (magazineHash[word] < 0) return console.log("No") //don't need this if magazineHash[word] = 0, statement evaluates to false
+//     }
+//     return console.log("Yes")
+// }
 
 checkMagazine(['give', 'me', 'one', 'grand', 'today', 'night'], ['give', 'one', 'grand', 'today']) //yes
 checkMagazine(['two', 'times', 'three', 'is', 'not', 'four'], ['two', 'times', 'two', 'is', 'four']) //no
