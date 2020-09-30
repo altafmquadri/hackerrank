@@ -114,9 +114,10 @@ const processData = (input) => {
     const myQueue = new Queue()
     let result = ''
 
-    // const inputArr = input.match(/[^\r\n]+/g)  this line is for input from the website
+    // const inputArr = input.match(/[^\r\n]+/g)  this line is for input from the website or easier next one
+    // const inputArr = input.split('\n')
 
-    for (let q of input) {
+    for (let q of input) { //if using above change to inputArr
         let arr = q.split(' ')
         if (arr[0] == 1) {
             myQueue.enqueue(arr[1])

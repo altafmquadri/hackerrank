@@ -22,7 +22,7 @@ const lcsDP = (s1, s2) => {
 
     for (let row = 1; row < rows; row++) {
         for (let col = 1; col < cols; col++) {
-            //if letter values not equal take the max of top and left matrix values
+            //if letter values not equal take the max of top or left matrix values
             if (s1[row - 1] !== s2[col - 1]) {
                 matrix[row][col] = Math.max(matrix[row - 1][col], matrix[row][col - 1])
             }
