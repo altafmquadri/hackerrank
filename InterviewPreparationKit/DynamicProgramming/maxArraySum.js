@@ -62,7 +62,10 @@ Sample Output 2
 
 Explanation 2
 Our subsets are [3,-7,10], [3,8], [3,10], [5,8], [5,10] and [-7,10]. 
-The maximum subset sum is 15 from the fifth subset listed. */
+The maximum subset sum is 15 from the fifth subset listed. 
+
+https://youtu.be/n9F9wQD3Mhc
+*/
 
 const maxSubsetSum = arr => {
     const newArr = []
