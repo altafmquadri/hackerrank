@@ -90,7 +90,6 @@ const getWays = (n, c) => {
     let matrix = Array.from(new Array(m + 1), () => Array(n + 1).fill(0))
     console.log(matrix);
 
-
     for (let i = 0; i <= m; i++) {
         matrix[i][0] = 1
     }
