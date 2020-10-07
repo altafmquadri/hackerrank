@@ -15,7 +15,8 @@ Subset      Sum
 Our maximum subset sum is 8.
 
 Function Description
-Complete the maxSubsetSum function in the editor below. It should return an integer representing the maximum subset sum for the given array.
+Complete the maxSubsetSum function in the editor below. It should return an integer 
+representing the maximum subset sum for the given array.
 
 maxSubsetSum has the following parameter(s):
 arr: an array of integers
